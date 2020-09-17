@@ -14,10 +14,6 @@ POSITION = 1.1
 
 def new_position(value, POSITION):
     '''Takes in a direction input from user and returns new position'''
-    NORTH = 'n' or 'N'
-    SOUTH = 's' or 'S'
-    WEST = 'w' or 'W'
-    EAST = 'e' or 'E'
     if value == "n":
         POSITION += + 0.1
     elif value == "s":
