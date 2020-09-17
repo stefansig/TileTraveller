@@ -1,5 +1,5 @@
 
-
+POSTION = 1.1
 LEFT = "w"
 RIGHT = "r"
 UP = "n"
@@ -11,6 +11,39 @@ def get_move():
 
 
 def make_move():
+
+
+if POSTION == 1.1:
+    print("You can travel: (N)orth.")
+elif POSTION == 1.2:
+    print("You can travel: (N)orth or (E)ast or (S)outh.")
+elif POSTION == 1.3:
+    print("You can travel: (E)ast or (S)outh.")
+elif POSTION == 2.1:
+    print("You can travel: (N)orth.")
+elif POSTION == 2.2:
+    print("You can travel: (N)orth or (S)outh or (W)est.")
+elif POSTION == 2.3:
+    print("You can travel: (E)ast or (W)est.")
+elif POSTION == 3.1:
+    print("You can travel: (N)orth.")
+elif POSTION == 3.2:
+    print("You can travel: (N)orth or (S)outh.")
+elif POSTION == 3.3:
+    print("You can travel: (S)outh or (W)est.")
+
+
+
+
+
+
+
+
+
+
+
+While POSTION != 3.3
+
 
 #Player starts at position 1,1.
 
