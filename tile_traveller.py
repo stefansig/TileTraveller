@@ -1,4 +1,17 @@
-#test
+
+
+LEFT = "w"
+RIGHT = "r"
+UP = "n"
+DOWN = "s"
+
+
+def get_move():
+    move = input("Direction")
+
+
+def make_move():
+
 #Player starts at position 1,1.
 
 #1,1 : n
