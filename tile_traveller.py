@@ -8,64 +8,82 @@
 #leikmaður byrjar í reit 1.1
 
 POSITION = 1.1
-NORTH = 'n' or 'N'
-SOUTH = 's' or 'S'
-WEST = 'w' or 'W'
-EAST = 'e' or 'E'
 
-def new_position(value):
+
+def new_position(value, POSITION):
     '''Takes in a direction input from user and returns new position'''
-    if value == NORTH:
-        POSITION += 0.1
-    elif value == SOUTH:
+    NORTH = 'n' or 'N'
+    SOUTH = 's' or 'S'
+    WEST = 'w' or 'W'
+    EAST = 'e' or 'E'
+    if value == "n":
+        POSITION += + 0.1
+    elif value == "s":
         POSITION -= 0.1
-    elif value == WEST:
+    elif value == "w":
         POSITION -= 1.0
-    elif value == EAST:
+    elif value == "e":
         POSITION += 1.0
-    return POSITION
+    return round(POSITION,1)
 
 
-direction = input('Direction: ')
-present_position = new_position(direction)
-options = options(present_position)
 
 def options(position):
-    if POSTION == 1.1:
+    if position == 1.1:
         print("You can travel: (N)orth.")
-    elif POSTION == 1.2:
+        return "n"
+    elif position == 1.2:
         print("You can travel: (N)orth or (E)ast or (S)outh.")
-    elif POSTION == 1.3:
+        return "nes"
+    elif position == 1.3:
         print("You can travel: (E)ast or (S)outh.")
-    elif POSTION == 2.1:
+        return "es"
+    elif position == 2.1:
         print("You can travel: (N)orth.")
-    elif POSTION == 2.2:
+        return "n"
+    elif position == 2.2:
         print("You can travel: (N)orth or (S)outh or (W)est.")
-    elif POSTION == 2.3:
+        return "nsw"
+    elif position == 2.3:
         print("You can travel: (E)ast or (W)est.")
-    elif POSTION == 3.1:
+        return "ew"
+    elif position == 3.1:
         print("You can travel: (N)orth.")
-    elif POSTION == 3.2:
+        return "n"
+    elif position == 3.2:
         print("You can travel: (N)orth or (S)outh.")
-    elif POSTION == 3.3:
+        return "ns"
+    elif position == 3.3:
         print("You can travel: (S)outh or (W)est.")
-
-
-
-
-def get_move():
-    move = input("Direction")
-
-
-def make_move():
+        return "sw"
 
 
 
 
 
 
+while POSITION != 3.1:
+    legal = options(POSITION)
+    direction = input('Direction: ').lower()
+    if direction in legal:
+        POSITION = new_position(direction, POSITION)
+    else:
+        print("Not a valid direction!")
 
-While POSTION != 3.3
+
+
+#present_position = new_position(direction)
+#options = options(present_position)
+
+
+#print('You can travel: ')
+#direction = input('Direction: ')
+#print('Not a valid direction!')
+
+print('Victory!')
+
+
+
 
 
 #Player starts at position 1,1.
@@ -81,8 +99,5 @@ While POSTION != 3.3
 #3,3 : s / w
 
 
-print('You can travel: ')
-direction = input('Direction: ')
-print('Not a valid direction!')
-print('Victory!')
+
 
