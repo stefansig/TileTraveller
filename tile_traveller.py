@@ -13,7 +13,8 @@ SOUTH = 's' or 'S'
 WEST = 'w' or 'W'
 EAST = 'e' or 'E'
 
-def direction(value):
+def new_position(value):
+    '''Takes in a direction input from user and returns new position'''
     if value == NORTH:
         POSITION += 0.1
     elif value == SOUTH:
@@ -21,8 +22,34 @@ def direction(value):
     elif value == WEST:
         POSITION -= 1.0
     elif value == EAST:
-        POSITION = += 1.0
+        POSITION += 1.0
     return POSITION
+
+
+direction = input('Direction: ')
+present_position = new_position(direction)
+options = options(present_position)
+
+def options(position):
+    if POSTION == 1.1:
+        print("You can travel: (N)orth.")
+    elif POSTION == 1.2:
+        print("You can travel: (N)orth or (E)ast or (S)outh.")
+    elif POSTION == 1.3:
+        print("You can travel: (E)ast or (S)outh.")
+    elif POSTION == 2.1:
+        print("You can travel: (N)orth.")
+    elif POSTION == 2.2:
+        print("You can travel: (N)orth or (S)outh or (W)est.")
+    elif POSTION == 2.3:
+        print("You can travel: (E)ast or (W)est.")
+    elif POSTION == 3.1:
+        print("You can travel: (N)orth.")
+    elif POSTION == 3.2:
+        print("You can travel: (N)orth or (S)outh.")
+    elif POSTION == 3.3:
+        print("You can travel: (S)outh or (W)est.")
+
 
 
 
@@ -33,24 +60,7 @@ def get_move():
 def make_move():
 
 
-if POSTION == 1.1:
-    print("You can travel: (N)orth.")
-elif POSTION == 1.2:
-    print("You can travel: (N)orth or (E)ast or (S)outh.")
-elif POSTION == 1.3:
-    print("You can travel: (E)ast or (S)outh.")
-elif POSTION == 2.1:
-    print("You can travel: (N)orth.")
-elif POSTION == 2.2:
-    print("You can travel: (N)orth or (S)outh or (W)est.")
-elif POSTION == 2.3:
-    print("You can travel: (E)ast or (W)est.")
-elif POSTION == 3.1:
-    print("You can travel: (N)orth.")
-elif POSTION == 3.2:
-    print("You can travel: (N)orth or (S)outh.")
-elif POSTION == 3.3:
-    print("You can travel: (S)outh or (W)est.")
+
 
 
 
