@@ -1,9 +1,29 @@
+#Þurfum að bjóða notanda möguleika n/s/e/v
+#hann velur eitthvað af möguleikunum og færist um reit
+#þá fær hann aftur boð um möguleika
+#ef hann velur eh sem er ekki möguleiki fær hann invalid direction
+#þá fær hann aftur boð um möguleika
+#forritið þarf að vita í hvaða reit leikmaður er í svo hann geti
+#boðið honum rétta möguleika.
+#leikmaður byrjar í reit 1.1
 
-POSTION = 1.1
-LEFT = "w"
-RIGHT = "r"
-UP = "n"
-DOWN = "s"
+POSITION = 1.1
+NORTH = 'n' or 'N'
+SOUTH = 's' or 'S'
+WEST = 'w' or 'W'
+EAST = 'e' or 'E'
+
+def direction(value):
+    if value == NORTH:
+        POSITION += 0.1
+    elif value == SOUTH:
+        POSITION -= 0.1
+    elif value == WEST:
+        POSITION -= 1.0
+    elif value == EAST:
+        POSITION = += 1.0
+    return POSITION
+
 
 
 def get_move():
@@ -31,13 +51,6 @@ elif POSTION == 3.2:
     print("You can travel: (N)orth or (S)outh.")
 elif POSTION == 3.3:
     print("You can travel: (S)outh or (W)est.")
-
-
-
-
-
-
-
 
 
 
