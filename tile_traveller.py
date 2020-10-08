@@ -4,6 +4,23 @@ EAST = 'e'
 SOUTH = 's'
 WEST = 'w'
 
+<<<<<<< HEAD
+=======
+def levers(col, row):
+
+    grid_location = col,row
+    levers_list = ["1,2", "2,2", "2,3", "3,2"]
+    for x in levers_list:
+        if x == grid_location:
+            pull_lever = input("Pull a lever (y/n): ")
+            pull_lever = pull_lever.lower()
+            if pull_lever == y:
+                #return coins =+ 1
+
+
+
+
+>>>>>>> 6b1ed2637a14d27944fbcbbd5feea0e139e53539
 def move(direction, col, row):
     ''' Returns updated col, row given the direction '''
     if direction == NORTH:
@@ -97,6 +114,10 @@ def play_one_move(col, row, valid_directions, coins):
         print("Not a valid direction!")
     else:
         col, row = move(direction, col, row)
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 6b1ed2637a14d27944fbcbbd5feea0e139e53539
         victory = is_victory(col, row)
         coins = lever(col, row, coins) #kalla á nýja fallið.
     return victory, col, row, coins
@@ -106,6 +127,10 @@ victory = False
 row = 1
 col = 1
 coins = 0 # breyta til að halda utan um magna coins.
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6b1ed2637a14d27944fbcbbd5feea0e139e53539
 
 while not victory:
     valid_directions = find_directions(col, row)
