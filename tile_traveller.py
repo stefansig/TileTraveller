@@ -13,7 +13,7 @@ def levers(col, row):
             pull_lever = input("Pull a lever (y/n): ")
             pull_lever = pull_lever.lower()
             if pull_lever == y:
-                return coins =+ 1
+                #return coins =+ 1
 
 
 
@@ -105,7 +105,7 @@ def play_one_move(col, row, valid_directions, coins):
         print("Not a valid direction!")
     else:
         col, row = move(direction, col, row)
-        coins = levers(col, row)
+    
         victory = is_victory(col, row)
         coins = lever(col, row, coins) #kalla á nýja fallið.
     return victory, col, row, coins
@@ -114,11 +114,8 @@ def play_one_move(col, row, valid_directions, coins):
 victory = False
 row = 1
 col = 1
-<<<<<<< HEAD
 coins = 0 # breyta til að halda utan um magna coins.
-=======
-coins = 0
->>>>>>> 6d1b1fd625076136d834266b843686d516b3db8c
+
 
 while not victory:
     valid_directions = find_directions(col, row)
