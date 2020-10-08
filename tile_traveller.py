@@ -69,28 +69,28 @@ def lever (col, row, coins):
         and lets the player pull it if it is there '''
     if col == 1 and row == 2:
         lever = random.choice(["y", "n"])
-        print("Pull a lever (y/n): {}" .format(lever)
+        print("Pull a lever (y/n): {}" .format(lever))
         if lever == 'y' or lever == 'Y':
             coins += 1
             print("You received 1 coin, your total is now {}.".format(coins))
 
     elif col == 2 and row == 2:
         lever = random.choice(["y", "n"])
-        print("Pull a lever (y/n): {}" .format(lever)
+        print("Pull a lever (y/n): {}" .format(lever))
         if lever == 'y' or lever == 'Y':
             coins += 1
             print("You received 1 coin, your total is now {}.".format(coins))
 
     elif col == 2 and row == 3:
         lever = random.choice(["y", "n"])
-        print("Pull a lever (y/n): {}" .format(lever)
+        print("Pull a lever (y/n): {}" .format(lever))
         if lever == 'y' or lever == 'Y':
             coins += 1
             print("You received 1 coin, your total is now {}.".format(coins))
 
     elif col == 3 and row == 2:
         lever = random.choice(["y", "n"])
-        print("Pull a lever (y/n): {}" .format(lever)
+        print("Pull a lever (y/n): {}" .format(lever))
         if lever == 'y' or lever == 'Y':
             coins += 1
             print("You received 1 coin, your total is now {}.".format(coins))
@@ -123,11 +123,13 @@ def play():
     row = 1
     col = 1
     coins = 0 # breyta til að halda utan um magna coins.
+    moves = 0
     while not victory:
         valid_directions = find_directions(col, row)
         print_directions(valid_directions)
         victory, col, row, coins = play_one_move(col, row, valid_directions, coins)
-    print("Victory! Total coins {}.".format(coins))
+        moves += 1
+    print("Victory! Total coins {}. Moves {}.".format(coins, moves))
     replay()
 
 play()
