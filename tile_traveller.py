@@ -4,11 +4,6 @@ EAST = 'e'
 SOUTH = 's'
 WEST = 'w'
 
-def levers(col, row):
-    
-
-
-
 def move(direction, col, row):
     ''' Returns updated col, row given the direction '''
     if direction == NORTH:
@@ -65,24 +60,30 @@ def find_directions(col, row):
 def lever (col, row, coins):
     ''' Checks if there is a lever to pull on tile
         and lets the player pull it if it is there '''
-
     if col == 1 and row == 2:
         lever = input("Pull a lever (y/n): ")
-        if lever == 'y' or 'Y':
+        if lever == 'y' or lever == 'Y':
             coins += 1
+            print("You received 1 coin, your total is now {}.".format(coins))
+            
     elif col == 2 and row == 2:
         lever = input("Pull a lever (y/n): ")
-        if lever == 'y' or 'Y':
+        if lever == 'y' or lever == 'Y':
             coins += 1
+            print("You received 1 coin, your total is now {}.".format(coins))
+
     elif col == 2 and row == 3:
         lever = input("Pull a lever (y/n): ")
-        if lever == 'y' or 'Y':
+        if lever == 'y' or lever == 'Y':
             coins += 1
+            print("You received 1 coin, your total is now {}.".format(coins))
+
     elif col == 3 and row == 2:
         lever = input("Pull a lever (y/n): ")
-        if lever == 'y' or 'Y':
+        if lever == 'y' or lever == 'Y':
             coins += 1
-    print("You received 1 coin, your total is now {}.".format(coins))
+            print("You received 1 coin, your total is now {}.".format(coins))
+
     return coins
 
 def play_one_move(col, row, valid_directions, coins):
@@ -96,7 +97,6 @@ def play_one_move(col, row, valid_directions, coins):
         print("Not a valid direction!")
     else:
         col, row = move(direction, col, row)
-        coins = levers(col, row)
         victory = is_victory(col, row)
         coins = lever(col, row, coins) #kalla á nýja fallið.
     return victory, col, row, coins
@@ -105,11 +105,7 @@ def play_one_move(col, row, valid_directions, coins):
 victory = False
 row = 1
 col = 1
-<<<<<<< HEAD
 coins = 0 # breyta til að halda utan um magna coins.
-=======
-coins = 0
->>>>>>> 6d1b1fd625076136d834266b843686d516b3db8c
 
 while not victory:
     valid_directions = find_directions(col, row)
