@@ -5,7 +5,16 @@ SOUTH = 's'
 WEST = 'w'
 
 def levers(col, row):
-    
+
+    grid_location = col,row
+    levers_list = ["1,2", "2,2", "2,3", "3,2"]
+    for x in levers_list:
+        if x == grid_location:
+            pull_lever = input("Pull a lever (y/n): ")
+            pull_lever = pull_lever.lower()
+            if pull_lever == y:
+                return coins =+ 1
+
 
 
 
