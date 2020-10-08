@@ -4,23 +4,6 @@ EAST = 'e'
 SOUTH = 's'
 WEST = 'w'
 
-<<<<<<< HEAD
-=======
-def levers(col, row):
-
-    grid_location = col,row
-    levers_list = ["1,2", "2,2", "2,3", "3,2"]
-    for x in levers_list:
-        if x == grid_location:
-            pull_lever = input("Pull a lever (y/n): ")
-            pull_lever = pull_lever.lower()
-            if pull_lever == y:
-                #return coins =+ 1
-
-
-
-
->>>>>>> 6b1ed2637a14d27944fbcbbd5feea0e139e53539
 def move(direction, col, row):
     ''' Returns updated col, row given the direction '''
     if direction == NORTH:
@@ -82,7 +65,7 @@ def lever (col, row, coins):
         if lever == 'y' or lever == 'Y':
             coins += 1
             print("You received 1 coin, your total is now {}.".format(coins))
-            
+
     elif col == 2 and row == 2:
         lever = input("Pull a lever (y/n): ")
         if lever == 'y' or lever == 'Y':
@@ -114,26 +97,27 @@ def play_one_move(col, row, valid_directions, coins):
         print("Not a valid direction!")
     else:
         col, row = move(direction, col, row)
-<<<<<<< HEAD
-=======
-    
->>>>>>> 6b1ed2637a14d27944fbcbbd5feea0e139e53539
         victory = is_victory(col, row)
         coins = lever(col, row, coins) #kalla á nýja fallið.
     return victory, col, row, coins
 
-# The main program starts here
-victory = False
-row = 1
-col = 1
-coins = 0 # breyta til að halda utan um magna coins.
-<<<<<<< HEAD
-=======
+def replay():
+    replay = input("Play again (y/n): ")
+    if replay == 'y' or replay == 'Y':
+        play()
 
->>>>>>> 6b1ed2637a14d27944fbcbbd5feea0e139e53539
+def play():
+    # The main program starts here
+    victory = False
+    row = 1
+    col = 1
+    coins = 0 # breyta til að halda utan um magna coins.
+    while not victory:
+        valid_directions = find_directions(col, row)
+        print_directions(valid_directions)
+        victory, col, row, coins = play_one_move(col, row, valid_directions, coins)
+    print("Victory! Total coins {}.".format(coins))
+    replay()
 
-while not victory:
-    valid_directions = find_directions(col, row)
-    print_directions(valid_directions)
-    victory, col, row, coins = play_one_move(col, row, valid_directions, coins)
-print("Victory! Total coins {}".format(coins))
+play()
+# https://github.com/stefansig/TileTraveller.git
