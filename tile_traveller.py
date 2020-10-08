@@ -4,6 +4,11 @@ EAST = 'e'
 SOUTH = 's'
 WEST = 'w'
 
+def levers(col, row):
+    
+
+
+
 def move(direction, col, row):
     ''' Returns updated col, row given the direction '''
     if direction == NORTH:
@@ -68,6 +73,7 @@ def play_one_move(col, row, valid_directions):
         print("Not a valid direction!")
     else:
         col, row = move(direction, col, row)
+        coins = levers(col, row)
         victory = is_victory(col, row)
     return victory, col, row
 
@@ -75,6 +81,7 @@ def play_one_move(col, row, valid_directions):
 victory = False
 row = 1
 col = 1
+coins = 0
 
 while not victory:
     valid_directions = find_directions(col, row)
