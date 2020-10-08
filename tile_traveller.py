@@ -1,22 +1,9 @@
 # Constants
+# https://github.com/stefansig/TileTraveller/blob/master/tile_traveller.py
 NORTH = 'n'
 EAST = 'e'
 SOUTH = 's'
 WEST = 'w'
-
-def levers(col, row):
-
-    grid_location = col,row
-    levers_list = ["1,2", "2,2", "2,3", "3,2"]
-    for x in levers_list:
-        if x == grid_location:
-            pull_lever = input("Pull a lever (y/n): ")
-            pull_lever = pull_lever.lower()
-            if pull_lever == y:
-            #    return coins =+ 1
-
-
-
 
 def move(direction, col, row):
     ''' Returns updated col, row given the direction '''
@@ -74,24 +61,30 @@ def find_directions(col, row):
 def lever (col, row, coins):
     ''' Checks if there is a lever to pull on tile
         and lets the player pull it if it is there '''
-
     if col == 1 and row == 2:
         lever = input("Pull a lever (y/n): ")
-        if lever == 'y' or 'Y':
+        if lever == 'y' or lever == 'Y':
             coins += 1
+            print("You received 1 coin, your total is now {}.".format(coins))
+            
     elif col == 2 and row == 2:
         lever = input("Pull a lever (y/n): ")
-        if lever == 'y' or 'Y':
+        if lever == 'y' or lever == 'Y':
             coins += 1
+            print("You received 1 coin, your total is now {}.".format(coins))
+
     elif col == 2 and row == 3:
         lever = input("Pull a lever (y/n): ")
-        if lever == 'y' or 'Y':
+        if lever == 'y' or lever == 'Y':
             coins += 1
+            print("You received 1 coin, your total is now {}.".format(coins))
+
     elif col == 3 and row == 2:
         lever = input("Pull a lever (y/n): ")
-        if lever == 'y' or 'Y':
+        if lever == 'y' or lever == 'Y':
             coins += 1
-    print("You received 1 coin, your total is now {}.".format(coins))
+            print("You received 1 coin, your total is now {}.".format(coins))
+
     return coins
 
 def play_one_move(col, row, valid_directions, coins):
@@ -105,7 +98,6 @@ def play_one_move(col, row, valid_directions, coins):
         print("Not a valid direction!")
     else:
         col, row = move(direction, col, row)
-        coins = levers(col, row)
         victory = is_victory(col, row)
         coins = lever(col, row, coins) #kalla á nýja fallið.
     return victory, col, row, coins
@@ -114,10 +106,10 @@ def play_one_move(col, row, valid_directions, coins):
 victory = False
 row = 1
 col = 1
-coins = 0
+coins = 0 # breyta til að halda utan um magna coins.
 
 while not victory:
     valid_directions = find_directions(col, row)
     print_directions(valid_directions)
     victory, col, row, coins = play_one_move(col, row, valid_directions, coins)
-print("Victory! Total coins {}".format(coins))
+print("Victory! Total coins {}.".format(coins))
