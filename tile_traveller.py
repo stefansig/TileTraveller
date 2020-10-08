@@ -57,7 +57,30 @@ def find_directions(col, row):
         valid_directions = SOUTH+WEST
     return valid_directions
 
-def play_one_move(col, row, valid_directions):
+def lever (col, row, coins):
+    ''' Checks if there is a lever to pull on tile
+        and lets the player pull it if it is there '''
+
+    if col == 1 and row == 2:
+        lever = input("Pull a lever (y/n): ")
+        if lever == 'y' or 'Y':
+            coins += 1
+    elif col == 2 and row == 2:
+        lever = input("Pull a lever (y/n): ")
+        if lever == 'y' or 'Y':
+            coins += 1
+    elif col == 2 and row == 3:
+        lever = input("Pull a lever (y/n): ")
+        if lever == 'y' or 'Y':
+            coins += 1
+    elif col == 3 and row == 2:
+        lever = input("Pull a lever (y/n): ")
+        if lever == 'y' or 'Y':
+            coins += 1
+    print("You received 1 coin, your total is now {}.".format(coins))
+    return coins
+
+def play_one_move(col, row, valid_directions, coins):
     ''' Plays one move of the game
         Return if victory has been obtained and updated col,row '''
     victory = False
@@ -69,15 +92,17 @@ def play_one_move(col, row, valid_directions):
     else:
         col, row = move(direction, col, row)
         victory = is_victory(col, row)
-    return victory, col, row
+        coins = lever(col, row, coins) #kalla á nýja fallið.
+    return victory, col, row, coins
 
 # The main program starts here
 victory = False
 row = 1
 col = 1
+coins = 0 # breyta til að halda utan um magna coins.
 
 while not victory:
     valid_directions = find_directions(col, row)
     print_directions(valid_directions)
-    victory, col, row = play_one_move(col, row, valid_directions)
-print("Victory!")
+    victory, col, row, coins = play_one_move(col, row, valid_directions, coins)
+print("Victory! Total coins {}".format(coins))
