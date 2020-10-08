@@ -1,4 +1,5 @@
 # Constants
+# https://github.com/stefansig/TileTraveller/blob/master/tile_traveller.py
 NORTH = 'n'
 EAST = 'e'
 SOUTH = 's'
@@ -101,6 +102,7 @@ def play_one_move(col, row, valid_directions, coins):
         coins = lever(col, row, coins) #kalla á nýja fallið.
     return victory, col, row, coins
 
+<<<<<<< HEAD
 def replay():
     replay = input("Play again (y/n): ")
     if replay == 'y' or replay == 'Y':
@@ -121,3 +123,16 @@ def play():
 
 play()
 # https://github.com/stefansig/TileTraveller.git
+=======
+# The main program starts here
+victory = False
+row = 1
+col = 1
+coins = 0 # breyta til að halda utan um magna coins.
+
+while not victory:
+    valid_directions = find_directions(col, row)
+    print_directions(valid_directions)
+    victory, col, row, coins = play_one_move(col, row, valid_directions, coins)
+print("Victory! Total coins {}.".format(coins))
+>>>>>>> f6e20d1973574a689cb664e34cdc6ff3990c1b6b
