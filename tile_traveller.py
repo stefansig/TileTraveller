@@ -1,76 +1,83 @@
-#Þurfum að bjóða notanda möguleika n/s/e/v
-#hann velur eitthvað af möguleikunum og færist um reit
-#þá fær hann aftur boð um möguleika
-#ef hann velur eh sem er ekki möguleiki fær hann invalid direction
-#þá fær hann aftur boð um möguleika
-#forritið þarf að vita í hvaða reit leikmaður er í svo hann geti
-#boðið honum rétta möguleika.
-#leikmaður byrjar í reit 1.1
+# Constants
+NORTH = 'n'
+EAST = 'e'
+SOUTH = 's'
+WEST = 'w'
 
-#https://github.com/stefansig/TileTraveller/blob/master/tile_traveller.py
+def move(direction, col, row):
+    ''' Returns updated col, row given the direction '''
+    if direction == NORTH:
+        row += 1
+    elif direction == SOUTH:
+        row -= 1
+    elif direction == EAST:
+        col += 1
+    elif direction == WEST:
+        col -= 1
+    return(col, row)    
 
-POSITION = 1.1
+def is_victory(col, row):
+    ''' Return true if player is in the victory cell '''
+    return col == 3 and row == 1 # (3,1)
 
+def print_directions(directions_str):
+    print("You can travel: ", end='')
+    first = True
+    for ch in directions_str:
+        if not first:
+            print(" or ", end='')
+        if ch == NORTH:
+            print("(N)orth", end='')
+        elif ch == EAST:
+            print("(E)ast", end='')
+        elif ch == SOUTH:
+            print("(S)outh", end='')
+        elif ch == WEST:
+            print("(W)est", end='')
+        first = False
+    print(".")
+        
+def find_directions(col, row):
+    ''' Returns valid directions as a string given the supplied location '''
+    if col == 1 and row == 1:   # (1,1)
+        valid_directions = NORTH
+    elif col == 1 and row == 2: # (1,2)
+        valid_directions = NORTH+EAST+SOUTH
+    elif col == 1 and row == 3: # (1,3)
+        valid_directions = EAST+SOUTH
+    elif col == 2 and row == 1: # (2,1)
+        valid_directions = NORTH
+    elif col == 2 and row == 2: # (2,2)
+        valid_directions = SOUTH+WEST
+    elif col == 2 and row == 3: # (2,3)
+        valid_directions = EAST+WEST
+    elif col == 3 and row == 2: # (3,2)
+        valid_directions = NORTH+SOUTH
+    elif col == 3 and row == 3: # (3,3)
+        valid_directions = SOUTH+WEST
+    return valid_directions
 
-def new_position(value, POSITION):
-    '''Takes in a direction input from user and returns new position'''
-    if value == "n":
-        POSITION += + 0.1
-    elif value == "s":
-        POSITION -= 0.1
-    elif value == "w":
-        POSITION -= 1.0
-    elif value == "e":
-        POSITION += 1.0
-    return round(POSITION,1)
-
-
-
-def options(position):
-    if position == 1.1:
-        print("You can travel: (N)orth.")
-        return "n"
-    elif position == 1.2:
-        print("You can travel: (N)orth or (E)ast or (S)outh.")
-        return "nes"
-    elif position == 1.3:
-        print("You can travel: (E)ast or (S)outh.")
-        return "es"
-    elif position == 2.1:
-        print("You can travel: (N)orth.")
-        return "n"
-    elif position == 2.2:
-        print("You can travel: (S)outh or (W)est.")
-        return "sw"
-    elif position == 2.3:
-        print("You can travel: (E)ast or (W)est.")
-        return "ew"
-    elif position == 3.1:
-        print("You can travel: (N)orth.")
-        return "n"
-    elif position == 3.2:
-        print("You can travel: (N)orth or (S)outh.")
-        return "ns"
-    elif position == 3.3:
-        print("You can travel: (S)outh or (W)est.")
-        return "sw"
-
-
-
-while POSITION != 3.1:
-    legal = options(POSITION)
-    direction = input('Direction: ').lower()
-    if direction in legal:
-        POSITION = new_position(direction, POSITION)
-    else:
+def play_one_move(col, row, valid_directions):
+    ''' Plays one move of the game
+        Return if victory has been obtained and updated col,row '''
+    victory = False
+    direction = input("Direction: ")
+    direction = direction.lower()
+    
+    if not direction in valid_directions:
         print("Not a valid direction!")
+    else:
+        col, row = move(direction, col, row)
+        victory = is_victory(col, row)
+    return victory, col, row
 
-print('Victory!')
+# The main program starts here
+victory = False
+row = 1
+col = 1
 
-
-
-
-
-
-
-
+while not victory:
+    valid_directions = find_directions(col, row)
+    print_directions(valid_directions)
+    victory, col, row = play_one_move(col, row, valid_directions)
+print("Victory!")
